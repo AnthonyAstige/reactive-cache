@@ -1,40 +1,62 @@
-# Reactive Cache
+## Reactive Cache
 
-Client side caching that reacts to changing data with O(1) retreival time
+A client side Meteor package for caching that reacts to changing data with O(1) retreival time.
 
-## Use cases
+### Use cases
 
-### Calculations
-
-Running complex calculations on Mongo collection data and wanting to minimize re-calculations while keeping accurate
-
-### Slow Minimongo
-
-Running slow queries on MiniMongo (ie; based on timestamps) and wanting to minimize them while still keeping accurate results.
+* ***Calculations*** - Running complex calculations on Mongo collection data and wanting to minimize re-calculations while keeping accurate
+* **Slow Minimongo** - Running slow queries on MiniMongo (ie; based on timestamps) and wanting to minimize them while still keeping accurate results.
 
 
 
-## Example Usage
+### Example Usage
 
 ```
 var Widgets = new Collection('widgets');
-var widgetsCache = new ReactiveCache();
+var widgetsSummaryCache = new ReactiveCache();
 var options = {
 	conditions:     function() { return { owner: Meteor.userId() }; },
 	invalidateOn:   [ 'changed', 'removed' ],
 	prefix:         function(doc) { return doc._id; }
 };
-widgetsCache.observe(Widgets, )
+widgetsSummaryCache.observe(Widgets, options);
+
+function complexSummaryCalculations(widgets) {
+	// Some code that's cpu intensive and takes a long time to return
+}
+
+function getWidgetsSummary() {
+	var summary = widgetsSummaryCache.get(id);
+	if (summary) {
+		return summary
+	}
+
+	// Run calculations
+	var summary = complexSummaryCalculations(Widgets.find({}));
+	
+	widgetsSummaryCache.set(id, summary);
+}
+
+// Contrived example of running getWidgetsSummary n times
+// This snippit runs in aproximately O(1) time instead of O(n) so long as no updates
+var n = 100;
+for(var ii = 0; ii < n; ii++) {
+	console.log(getWidgetsSummary());
+}
+
 ```
 
-## API
+### API
 
-### ReactiveCahce.observe(collection, options)
+#### ReactiveCahce.observe(collection, options)
+
+#### ReactiveCahce.set(id, value)
+
+#### ReactiveCahce.get(id)
+
+#### ReactiveCache.resetAll
 
 
+### In the wild
 
-### ReactiveCache.resetAll
-
-This is is helpful for changing conditions
-ie; When caching based on the logged in use then you need to reset when a user
-logs out or logs in (so new observations can be setup and caches invalidated)
+* http://www.trackmyfoods.com - For reused complex calculations of 'meta nutrients'
