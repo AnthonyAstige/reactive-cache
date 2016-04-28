@@ -33,7 +33,7 @@ function getWidgetsSummary() {
 
 	// Run calculations
 	var summary = complexSummaryCalculations(Widgets.find({}));
-	
+
 	widgetsSummaryCache.set(id, summary);
 }
 
@@ -60,3 +60,7 @@ for(var ii = 0; ii < n; ii++) {
 ### In the wild
 
 * http://www.trackmyfoods.com - For reused complex calculations of 'meta nutrients'
+
+### TODO
+
+Update readme to an indexed cache with actual ids for get and set
