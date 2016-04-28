@@ -19,7 +19,7 @@ var options = {
 	invalidateOn:   [ 'changed', 'removed' ],
 	prefix:         function(doc) { return doc._id; }
 };
-widgetsCache.observe(Widgets, )
+widgetsCache.observe(Widgets, options);
 ```
 
 ### API : High level
