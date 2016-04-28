@@ -59,4 +59,4 @@ for(var ii = 0; ii < n; ii++) {
 
 ### In the wild
 
-I've used on http://www.trackmyfoods.com for reused complex calculations
+* http://www.trackmyfoods.com - For reused complex calculations of 'meta nutrients'
