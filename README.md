@@ -55,3 +55,8 @@ for(var ii = 0; ii < n; ii++) {
 #### ReactiveCahce.get(id)
 
 #### ReactiveCache.resetAll
+
+
+### In the wild
+
+I've used on http://www.trackmyfoods.com for reused complex calculations
