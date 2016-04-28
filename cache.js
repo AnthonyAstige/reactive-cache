@@ -1,24 +1,6 @@
 'use strict';
 /*global Meteor, ReactiveVar, ReactiveCache, _, EJSON*/
 
-/**
- * Caching that reacts to changing data with O(1) retreival time
- *
- * Use case:
- *	Running complex calculations on Mongo collection data and wanting to
- *	minimize re-calculations while keeping accurate
- *
- * Use case:
- *	Running slow queries on MiniMongo (ie; based on timestamps) and wanting
- *	to minimize them while still keeping accurate results.
- *
- * Things to remember
- *	ReactiveCache.resetAll is helpful for changing conditions
- *	ie; When caching based on the logged in use then you need to reset when a user
- *	logs out or logs in (so new observations can be setup and caches invalidated)
- *
- */
-
 // TODO: Optomize this so not getting & setting entire cache?
 // TODO: * Or does JavaScript/ReactiveVar pass referentially quick enough anyways?
 // TODO: Add option for caching by reference
