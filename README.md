@@ -16,7 +16,7 @@ var Widgets = new Collection('widgets');
 var widgetsSummaryCache = new ReactiveCache();
 var options = {
 	conditions:     function() { return { owner: Meteor.userId() }; },
-	invalidateOn:   [ 'changed', 'removed' ],
+	invalidateOn:   [ 'changed', 'removed', 'added' ],
 	prefix:         function(doc) { return doc._id; }
 };
 widgetsSummaryCache.observe(Widgets, options);
