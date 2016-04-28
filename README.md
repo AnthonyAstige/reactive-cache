@@ -47,8 +47,6 @@ for(var ii = 0; ii < n; ii++) {
 
 ```
 
-This will keep a cache of widgets 
-
 ### API
 
 #### ReactiveCahce.observe(collection, options)
