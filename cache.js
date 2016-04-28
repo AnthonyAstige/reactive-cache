@@ -49,7 +49,7 @@ if (Meteor.isClient) {
 	 *			Accepted Values: added, changed, removed
 	 *			If undefined clears for all actions
 	 *
-	 *		prefixer: [Optional] [Function] returns a prefix for keys to remove from doc
+	 *		prefix: [Optional] [Function] returns a prefix for keys to remove from doc
 	 *			So that invalidation only occurs for specific documents
 	 *			If undefined always clears entire cache
 	 */
