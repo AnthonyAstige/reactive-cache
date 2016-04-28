@@ -58,7 +58,3 @@ This will keep a cache of widgets
 #### ReactiveCahce.get(id)
 
 #### ReactiveCache.resetAll
-
-This is is helpful for changing conditions
-ie; When caching based on the logged in use then you need to reset when a user
-logs out or logs in (so new observations can be setup and caches invalidated)
