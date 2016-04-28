@@ -32,8 +32,7 @@ function getWidgetsSummary() {
 	}
 
 	// Run calculations
-	var widgets = Widget.find({});
-	var summary = complexSummaryCalculations(widgets);
+	var summary = complexSummaryCalculations(Widgets.find({}));
 	
 	widgetsSummaryCache.set(id, summary);
 }
