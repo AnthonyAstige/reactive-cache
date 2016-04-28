@@ -1,20 +1,15 @@
-# Reactive Cache
+## Reactive Cache
 
 Client side caching that reacts to changing data with O(1) retreival time
 
-## Use cases
+### Use cases
 
-### Calculations
-
-Running complex calculations on Mongo collection data and wanting to minimize re-calculations while keeping accurate
-
-### Slow Minimongo
-
-Running slow queries on MiniMongo (ie; based on timestamps) and wanting to minimize them while still keeping accurate results.
+* ***Calculations*** - Running complex calculations on Mongo collection data and wanting to minimize re-calculations while keeping accurate
+* **Slow Minimongo** - Running slow queries on MiniMongo (ie; based on timestamps) and wanting to minimize them while still keeping accurate results.
 
 
 
-## Example Usage
+### Example Usage
 
 ```
 var Widgets = new Collection('widgets');
@@ -27,14 +22,16 @@ var options = {
 widgetsCache.observe(Widgets, )
 ```
 
-## API
+### API : High level
 
-### ReactiveCahce.observe(collection, options)
+#### ReactiveCahce.observe(collection, options)
 
-
-
-### ReactiveCache.resetAll
+#### ReactiveCache.resetAll
 
 This is is helpful for changing conditions
 ie; When caching based on the logged in use then you need to reset when a user
 logs out or logs in (so new observations can be setup and caches invalidated)
+
+### API : Low level
+
+(See the source code)
